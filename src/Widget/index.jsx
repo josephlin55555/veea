@@ -15,6 +15,7 @@ export default class Widget extends Component {
   }
 
   render() {
+    console.log(this.state.data)
     return (
       <div>Widget</div>
     );
