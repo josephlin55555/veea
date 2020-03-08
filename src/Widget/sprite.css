@@ -1,0 +1,58 @@
+.flag {
+  background-image: url(http://s3.amazonaws.com/com.veea.medals/flags.png);
+  background-repeat: no-repeat;
+  height: 17px;
+  width: 28px;
+}
+
+.first {
+  background-position: 0px 0px;
+}
+
+.second {
+  background-position: 0px -17px;
+}
+
+.third {
+  background-position: 0px -34px;
+}
+
+.fourth {
+  background-position: 0px -51px;
+}
+
+.fifth {
+  background-position: 0px -68px;
+}
+
+.sixth {
+  background-position: 0px -85px;
+}
+
+.seventh {
+  background-position: 0px -102px;
+}
+
+.eighth {
+  background-position: 0px -119px;
+}
+
+.ninth {
+  background-position: 0px -136px;
+}
+
+.tenth {
+  background-position: 0px -153px;
+}
+
+.eleven {
+  background-position: 0px -170px;
+}
+
+.twelve {
+  background-position: 0px -187px;
+}
+
+.thirteen {
+  background-position: 0px -204px;
+}
