@@ -1,3 +1,21 @@
+.circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%
+}
+
+.gold {
+  background: gold;
+}
+
+.silver {
+  background: silver;
+}
+
+.bronze {
+  background: #CD7F32;
+}
+
 .flag {
   background-image: url(http://s3.amazonaws.com/com.veea.medals/flags.png);
   background-repeat: no-repeat;
@@ -5,54 +23,54 @@
   width: 28px;
 }
 
-.first {
+.aut {
   background-position: 0px 0px;
 }
 
-.second {
+.blr {
   background-position: 0px -17px;
 }
 
-.third {
+.can {
   background-position: 0px -34px;
 }
 
-.fourth {
+.chn {
   background-position: 0px -51px;
 }
 
-.fifth {
+.fra {
   background-position: 0px -68px;
 }
 
-.sixth {
+.ger {
   background-position: 0px -85px;
 }
 
-.seventh {
+.ita {
   background-position: 0px -102px;
 }
 
-.eighth {
+.ned {
   background-position: 0px -119px;
 }
 
-.ninth {
+.nor {
   background-position: 0px -136px;
 }
 
-.tenth {
+.rus {
   background-position: 0px -153px;
 }
 
-.eleven {
+.sui {
   background-position: 0px -170px;
 }
 
-.twelve {
+.swe {
   background-position: 0px -187px;
 }
 
-.thirteen {
+.usa {
   background-position: 0px -204px;
 }
