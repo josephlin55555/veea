@@ -1,18 +1,43 @@
+.totals {
+  font-weight: bold;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  width: 500px;
+}
+
+.header {
+  height: 25px;
+  border-bottom: 2px solid black;
+}
+
+.row {
+  height: 25px;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
 .circle {
   width: 20px;
   height: 20px;
-  border-radius: 50%
+  border-radius: 50%;
+  margin: auto;
 }
 
-.gold {
+#gold {
   background: gold;
 }
 
-.silver {
+#silver {
   background: silver;
 }
 
-.bronze {
+#bronze {
   background: #CD7F32;
 }
 
