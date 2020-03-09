@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import classnames from 'classnames';
 import './index.css';
+
+import {
+  GOLD,
+  SILVER,
+  BRONZE,
+  TOTAL
+} from '../constants';
 
 export default class Widget extends Component {
   state = {
     data: [],
-    sortBy: null,
+    sortBy: GOLD,
     isDesc: true,
   }
 
@@ -25,43 +33,42 @@ export default class Widget extends Component {
   }
 
   clickGold = event => {
-    console.log(event)
     const { isDesc, sortBy } = this.state;
     this.setState({
-      isDesc: sortBy !== 'gold'
+      isDesc: sortBy !== GOLD
         ? true
         : !isDesc,
-      sortBy: 'gold'
+      sortBy: GOLD
     })
   }
 
   clickSilver = () => {
     const { isDesc, sortBy } = this.state;
     this.setState({
-      isDesc: sortBy !== 'silver'
+      isDesc: sortBy !== SILVER
         ? true
         : !isDesc,
-      sortBy: 'silver'
+      sortBy: SILVER
     })
   }
 
   clickBronze = () => {
     const { isDesc, sortBy } = this.state;
     this.setState({
-      isDesc: sortBy !== 'bronze'
+      isDesc: sortBy !== BRONZE
         ? true
         : !isDesc,
-      sortBy: 'bronze'
+      sortBy: BRONZE
     })
   }
 
   clickTotal = () => {
     const { isDesc, sortBy } = this.state;
     this.setState({
-      isDesc: sortBy !== 'total'
+      isDesc: sortBy !== TOTAL
         ? true
         : !isDesc,
-      sortBy: 'total'
+      sortBy: TOTAL
     })
   }
 
@@ -76,38 +83,50 @@ export default class Widget extends Component {
   }
 
   render() {
+    const { sortBy } = this.state;
     const transformedData = this.transformData();
 
     return (
-      <table>
-        <tbody>
-          <tr className="header">
-            <th></th>
-            <th></th>
-            <th></th>
-            <th><div onClick={this.clickGold} className="circle clickable" id="gold" /></th>
-            <th><div onClick={this.clickSilver} className="circle clickable" id="silver" /></th>
-            <th><div onClick={this.clickBronze} className="circle clickable" id="bronze" /></th>
-            <th><span onClick={this.clickTotal} className="clickable">TOTAL</span></th>
-          </tr>
-          {
-            transformedData
-              .map((datum, index) => {
-                return (
-                  <tr key={index} className="row">
-                    <td>{index + 1}</td>
-                    <td><div className={`flag ${datum.code.toLowerCase()}`} /></td>
-                    <td>{datum.code}</td>
-                    <td>{datum.gold}</td>
-                    <td>{datum.silver}</td>
-                    <td>{datum.bronze}</td>
-                    <td className="totals">{datum.total}</td>
-                  </tr>
-                );
-              })
-          }
-        </tbody>
-      </table>
+      <div>
+        <span>MEDAL COUNT</span>
+        <table>
+          <tbody>
+            <tr className="header">
+              <th></th>
+              <th></th>
+              <th></th>
+              <th className={classnames({active: sortBy === GOLD})}>
+                <div onClick={this.clickGold} className="circle clickable gold" />
+              </th>
+              <th className={classnames({active: sortBy === SILVER})}>
+                <div onClick={this.clickSilver} className="circle clickable silver" />
+              </th>
+              <th className={classnames({active: sortBy === BRONZE})}>
+                <div onClick={this.clickBronze} className="circle clickable bronze" />
+              </th>
+              <th className={classnames({active: sortBy === TOTAL})}>
+                <span onClick={this.clickTotal} className="clickable">TOTAL</span>
+              </th>
+            </tr>
+            {
+              transformedData
+                .map((datum, index) => {
+                  return (
+                    <tr key={index} className="row">
+                      <td>{index + 1}</td>
+                      <td><div className={`flag ${datum.code.toLowerCase()}`} /></td>
+                      <td className="bold">{datum.code}</td>
+                      <td>{datum.gold}</td>
+                      <td>{datum.silver}</td>
+                      <td>{datum.bronze}</td>
+                      <td className="totals">{datum.total}</td>
+                    </tr>
+                  );
+                })
+            }
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
