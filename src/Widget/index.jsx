@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import classnames from 'classnames';
-import { orderBy } from 'lodash';
 import './index.css';
 
 import {
@@ -9,8 +8,6 @@ import {
   SILVER,
   BRONZE,
   TOTAL,
-  DESC,
-  ASC
 } from '../constants';
 
 export default class Widget extends Component {
@@ -77,26 +74,16 @@ export default class Widget extends Component {
 
   transformData = () => {
     const { sortBy, isDesc } = this.state;
+    const secondSortCondition = sortBy === GOLD
+      ? SILVER
+      : GOLD;
 
-    const sortGold = sortBy === GOLD;
-    const sortSilver = sortBy === SILVER;
-    const sortBronze = sortBy === BRONZE;
-    const sortTotal = sortBy === TOTAL;
-    const order = isDesc ? DESC : ASC;
-
-    let keys = [];
-
-    if (sortGold) {
-      keys = keys.concat(GOLD, SILVER);
-    } else if (sortSilver) {
-      keys = keys.concat(SILVER, GOLD);
-    } else if (sortBronze) {
-      keys = keys.concat(BRONZE, GOLD);
-    } else if (sortTotal) {
-      keys = keys.concat(TOTAL, GOLD);
-    }
-
-    return orderBy(this.state.data, keys, order);
+    return this.state.data
+      .sort((a, b) => {
+        return isDesc
+          ? b[sortBy] - a[sortBy] || b[secondSortCondition] - a[secondSortCondition]
+          : a[sortBy] - b[sortBy] || a[secondSortCondition] - b[secondSortCondition];
+      });
   }
 
   render() {
