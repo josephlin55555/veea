@@ -6,6 +6,16 @@
   color: gray;
 }
 
+.error-message {
+  height: 480px;
+  color: black;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .title {
   margin-top: 20px;
   margin-bottom: 20px;

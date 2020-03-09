@@ -3,6 +3,7 @@ import axios from 'axios';
 import classnames from 'classnames';
 import './index.css';
 
+import ErrorMessage from './ErrorMessage';
 import {
   GOLD,
   SILVER,
@@ -15,6 +16,7 @@ export default class Widget extends Component {
     data: [],
     sortBy: GOLD,
     isDesc: true,
+    hasError: false,
   }
 
   componentDidMount() {
@@ -29,7 +31,7 @@ export default class Widget extends Component {
             })
         });
       })
-      .catch(() => console.log("ERROR"))
+      .catch(() => this.setState({ hasError: true }));
   }
 
   clickGold = event => {
@@ -87,8 +89,12 @@ export default class Widget extends Component {
   }
 
   render() {
-    const { sortBy } = this.state;
+    const { sortBy, hasError } = this.state;
     const transformedData = this.transformData();
+
+    if (hasError) {
+      return <ErrorMessage />;
+    }
 
     return (
       <div className="app">
