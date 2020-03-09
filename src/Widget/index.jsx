@@ -14,7 +14,7 @@ import {
 export default class Widget extends Component {
   state = {
     data: [],
-    sortBy: GOLD,
+    sortBy: this.props.sortBy,
     isDesc: true,
     hasError: false,
   }
