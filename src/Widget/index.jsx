@@ -8,7 +8,9 @@ import {
   GOLD,
   SILVER,
   BRONZE,
-  TOTAL
+  TOTAL,
+  DESC,
+  ASC
 } from '../constants';
 
 export default class Widget extends Component {
@@ -80,6 +82,7 @@ export default class Widget extends Component {
     const sortSilver = sortBy === SILVER;
     const sortBronze = sortBy === BRONZE;
     const sortTotal = sortBy === TOTAL;
+    const order = isDesc ? DESC : ASC;
 
     let keys = [];
 
@@ -93,7 +96,7 @@ export default class Widget extends Component {
       keys = keys.concat(TOTAL, GOLD);
     }
 
-    return orderBy(this.state.data, keys, isDesc ? 'desc' : 'asc');
+    return orderBy(this.state.data, keys, order);
   }
 
   render() {
