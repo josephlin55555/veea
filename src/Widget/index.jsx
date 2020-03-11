@@ -81,6 +81,7 @@ export default class Widget extends Component {
       : GOLD;
 
     return this.state.data
+      .slice()
       .sort((a, b) => {
         return isDesc
           ? b[sortBy] - a[sortBy] || b[secondSortCondition] - a[secondSortCondition]
